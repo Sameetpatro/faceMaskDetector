@@ -1,75 +1,103 @@
-# Face Mask Detection using OpenCV and CNN
+# Face Mask Detection using Deep Learning
 
-A simple and effective deep learning project that detects whether a person is wearing a mask or not in real time using a webcam feed.
+This project can **detect whether a person is wearing a face mask or not** using a webcam or image.
 
----
-
-## 🔍 Overview
-
-This project uses a pre-trained CNN model (`mask_detector_model.h5`) combined with OpenCV’s Haar Cascade classifier (`face_detector.xml`) to detect faces and classify them as **Mask** or **No Mask**.
+It uses **Deep Learning (MobileNetV2)** and **OpenCV** to work in real time.
 
 ---
 
-## ⚙️ How It Works
+## What this project does
 
-1. **Face Detection:**
+The program:
 
-   * The Haar Cascade classifier locates faces in the video frame.
-2. **Feature Extraction & Classification:**
-
-   * Each detected face is resized and passed into the CNN model.
-   * The model predicts whether the face has a mask or not.
-3. **Real-Time Feedback:**
-
-   * Bounding boxes (green for mask, red for no mask) are drawn on the live video feed.
+1. Looks at a person’s face through a webcam or an image.
+2. Detects if the person’s face has a **mask** or **no mask**.
+3. Shows the result on the screen with a label and box around the face.
 
 ---
 
-## 🧠 Technologies Used
+## How it works
 
-* Python 3.x
-* OpenCV
-* TensorFlow / Keras
-* NumPy
+1. **Dataset** — Around 4000 images of people with and without masks were collected.
 
----
+2. **Model Training** —
 
-## ▶️ How to Run
+   * The images are split into 80% training and 20% testing.
+   * A **MobileNetV2** deep learning model (pre-trained on ImageNet) is used.
+   * Only the last few layers are trained to detect masks.
 
-1. Install dependencies:
+3. **Saved Model** — After training, a file called `mask_detector_model.h5` is created.
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Run the main script:
+4. **Detection** —
 
-   ```bash
-   python mask_detection_main.py
-   ```
-3. The webcam feed will open and start detecting faces with or without masks.
+   * The webcam or an image is given to the model.
+   * It checks the face area and predicts “Mask” or “No Mask”.
 
 ---
 
-## 📁 Folder Structure
+## 🖥️ How to run the project
 
-```
-FACEMASKDETECTOR/
-│
-├── dataset_train/         # Training images
-├── dataset_test/          # Testing images
-├── mask_detector_model.h5 # Pretrained CNN model
-├── face_detector.xml      # Haar Cascade for face detection
-├── mask_detection_main.py # Main detection script
-├── requirements.txt       # Required libraries
-└── sample_images/         # Example images (mask.png, nomask.png)
+### Step 1: Install the requirements
+
+Make sure you have Python installed, then open Command Prompt in your project folder and type:
+
+```bash
+pip install -r requirements.txt
 ```
 
+### Step 2: Train your own model (optional)
+
+If you want to train it yourself:
+
+```bash
+python train_model.py
+```
+
+This will create a new model file — `mask_detector_model.h5`.
+
+### Step 3: Run the detector
+
+After the model is ready:
+
+```bash
+python mask_detection_main.py
+```
+
+It will open your webcam and start detecting faces with or without masks.
+
 ---
 
-## 🚀 Possible Improvements
+---
 
-* Add a third class: *Improperly Worn Mask*
-* Train on a larger dataset with pose variation and occlusion
-* Integrate Flask or Streamlit for a web dashboard
+## 🧪 Technologies Used
+
+* **Python 3**
+* **TensorFlow / Keras**
+* **OpenCV**
+* **MobileNetV2 (Pretrained CNN)**
+* **NumPy & Matplotlib**
 
 ---
+
+## ⚡ Features
+
+✅ Works in real time using a webcam
+✅ Detects faces accurately
+✅ Trained on a custom dataset
+✅ Can easily be improved with more mask types and colors
+
+---
+
+## 💡 Future Improvements
+
+* Add third category → “Improperly worn mask”
+* Improve accuracy with more training images
+* Deploy the model as a web or mobile app
+
+---
+
+## 👨‍💻 Made By
+
+**Sameet Patro**
+Undergraduate Student — IIIT Sonepat
+
